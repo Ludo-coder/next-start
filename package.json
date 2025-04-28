@@ -57,7 +57,7 @@
     "typescript": "^5"
   },
   "bin": {
-    "create-next-start": "./create-next-start.js"
+    "create-next-quickstart": "./create-next-quickstart.js"
   },
   "repository": {
     "type": "git",
