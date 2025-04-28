@@ -1,46 +1,25 @@
 #!/usr/bin/env node
 
-import { join } from "path";
-import { existsSync, removeSync } from "fs-extra";
-import { createInterface } from "readline";
 import { execSync } from "child_process";
+import { join } from "path";
+import { existsSync } from "fs";
 
-// Ask for the name of the application
-const rl = createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const repoUrl = "https://github.com/Ludo-coder/next-start.git";
+const appName = process.argv[2];
 
-rl.question("Your application name: ", (appName) => {
-  const targetDir = join(process.cwd(), appName);
+if (!appName) {
+  console.log("Erreur : Veuillez fournir un nom pour le projet.");
+  process.exit(1);
+}
 
-  // Check if the target directory already exists
-  if (existsSync(targetDir)) {
-    console.log("Directory already exists:", targetDir);
-    rl.close();
-    return;
-  }
+const appPath = join(process.cwd(), appName);
 
-  // Clone the repository
-  const repoUrl = "https://github.com/Ludo-coder/next-start";
-  const cloneCommand = `git clone --depth 1 ${repoUrl} ${targetDir}`;
+if (existsSync(appPath)) {
+  console.log(`Erreur : Le dossier ${appName} existe déjà.`);
+  process.exit(1);
+}
 
-  try {
-    // Clone the repository
-    console.log("Project cloning...");
-    execSync(cloneCommand, { stdio: "inherit" });
+console.log(`Clonage du projet depuis ${repoUrl}...`);
+execSync(`git clone ${repoUrl} ${appName}`, { stdio: "inherit" });
 
-    // Remove node_modules
-    const nodeModulesPath = join(targetDir, "node_modules");
-    if (existsSync(nodeModulesPath)) {
-      removeSync(nodeModulesPath);
-      console.log("node_modules removed");
-    }
-
-    console.log(`Project ${appName} successfully cloned to ${targetDir}!`);
-    rl.close();
-  } catch (error) {
-    console.error("Error cloning the repository:", error);
-    rl.close();
-  }
-});
+process.chdir(appPath);
