@@ -58,5 +58,13 @@
   },
   "bin": {
     "create-next-start": "./create-next-start.js"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ludo-coder/next-start.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ludo-coder/next-start/issues"
+  },
+  "homepage": "https://github.com/Ludo-coder/next-start#readme"
 }
