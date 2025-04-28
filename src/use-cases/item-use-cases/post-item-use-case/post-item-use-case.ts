@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { itemQueryKey } from "./get-item-use-case";
-import { itemsQueryKey } from "./get-items-use-case";
+import { itemQueryKey } from "../get-item-use-case/get-item-use-case";
+import { itemsQueryKey } from "../get-items-use-case/get-items-use-case";
 import { toast } from "sonner";
 import { postItemService } from "@/src/services/item-services/post-item-service/post-item-service";
 import { PostItemFields } from "@/src/services/item-services/post-item-service/schema";

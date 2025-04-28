@@ -1,5 +1,8 @@
 ## Getting Started
 
+Please, don't forget to add your own .env files.
+NEXT_PUBLIC_API_HOST env variable is required.
+
 First install the dependencies:
 
 ```bash
@@ -23,6 +26,3 @@ pnpm dev
 # or
 bun dev
 ```
-
-Please, don't forget to add your own .env files.
-NEXT_PUBLIC_API_HOST env variable is required.
