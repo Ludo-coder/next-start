@@ -26,6 +26,3 @@ pnpm dev
 # or
 bun dev
 ```
-
-You can remove packages : fs-extra, child_process, readline
-You can remove : bin, repository, bugs, homepage
